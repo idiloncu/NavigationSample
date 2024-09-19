@@ -11,11 +11,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 
 @Composable
-fun SecondScreen(name:String,age:Int,navigateToThirdScreen: (String) -> Unit){
- 
+fun ThirdScreen(navigateToFirstScreen: () -> Unit) {
     Column (
         modifier= Modifier
             .fillMaxSize()
@@ -23,22 +21,20 @@ fun SecondScreen(name:String,age:Int,navigateToThirdScreen: (String) -> Unit){
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ){
-        Text("This is the second screen", fontSize = 24.sp)
-        Text("WELCOME $name", fontSize = 24.sp)
-        Text("Your age is $age", fontSize = 24.sp)
-       
+        Text("This is the third screen. Go to First Screen")
         Button(onClick = {
-            navigateToThirdScreen(name)
-            navigateToThirdScreen(age.toString())
-
+            navigateToFirstScreen()
         }) {
-            Text("Go to third screen")
+            Text("Go to first screen")
 
-        }
+        }}
     }
-}
+
+
+
 @Preview
 @Composable
-fun SecondPreview() {
-    SecondScreen("İdil",21,{})
+fun ThirdScreenPreview() {
+    ThirdScreen({})
+
 }
